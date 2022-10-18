@@ -18,7 +18,7 @@ export default function Home({ posts }) {
           ))}
         </div>
         <div className="post-widget">
-          <div className="post-widget_wrapper">
+          <div className="post-widget__wrapper">
             <PostWidget />
             <Categories />
           </div>
@@ -45,5 +45,11 @@ export const WrapperPage = styled.div`
   display: flex;
   .post {
     width: 80%;
+  }
+  .post-widget {
+    .post-widget__wrapper {
+      position: sticky;
+      top: 20px;
+    }
   }
 `;

@@ -18,64 +18,62 @@ const PostWidget = ({ categories, slug }) => {
     <PostWidgetWrapper>
       <h2>Ostatnie posty</h2>
       {realtedPosts.map((post) => (
-        <div key={post.name} className="single-related-post">
-          <div className="single-related-post__wrapper">
-            <img src={post.featuredImage.url} alt={post.title} />
-            <p>
-              <Link href={`/post/${post.slug}`}>{post.title}</Link>
-            </p>
-            <div className="calendar">
-              <svg
-                width="26"
-                height="24"
-                viewBox="0 0 26 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <rect
-                  x="4.38776"
-                  y="5"
-                  width="16.5452"
-                  height="16"
-                  rx="2"
-                  stroke="black"
-                  strokeWidth="1.3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M16.7967 3V7"
-                  stroke="black"
-                  strokeWidth="1.3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M8.52412 3V7"
-                  stroke="black"
-                  strokeWidth="1.3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M4.38776 11H20.933"
-                  stroke="black"
-                  strokeWidth="1.3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <rect
-                  x="8.52411"
-                  y="15"
-                  width="2.06816"
-                  height="2"
-                  stroke="black"
-                  strokeWidth="1.3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span>{moment(post.createdAt).format('MMM DD, YYYY')}</span>
-            </div>
+        <div key={post.name} className="single-related-post__wrapper">
+          <img src={post.featuredImage.url} alt={post.title} />
+          <p>
+            <Link href={`/post/${post.slug}`}>{post.title}</Link>
+          </p>
+          <div className="calendar">
+            <svg
+              width="26"
+              height="24"
+              viewBox="0 0 26 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect
+                x="4.38776"
+                y="5"
+                width="16.5452"
+                height="16"
+                rx="2"
+                stroke="black"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M16.7967 3V7"
+                stroke="black"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M8.52412 3V7"
+                stroke="black"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M4.38776 11H20.933"
+                stroke="black"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <rect
+                x="8.52411"
+                y="15"
+                width="2.06816"
+                height="2"
+                stroke="black"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>{moment(post.createdAt).format('MMM DD, YYYY')}</span>
           </div>
         </div>
       ))}
@@ -88,14 +86,15 @@ export const PostWidgetWrapper = styled.div`
     margin-top: 0;
   }
   max-width: 260px;
-  .single-related-post {
+
+  .single-related-post__wrapper {
     margin-bottom: 20px;
+    box-sizing: border-box;
     padding: 10px;
+    width: 100%;
     background-color: #d9d9d9;
-    .single-related-post__wrapper {
-      img {
-        width: 100%;
-      }
+    img {
+      width: 100%;
     }
   }
 `;
