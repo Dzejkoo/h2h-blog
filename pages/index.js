@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import { PostCard, Categories, PostWidget } from '../components';
-import { getPost } from '../services';
+import { getPosts } from '../services';
 
 export default function Home({ posts }) {
   return (
@@ -29,7 +29,7 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = (await getPost()) || [];
+  const posts = (await getPosts()) || [];
   return {
     props: { posts }
   };

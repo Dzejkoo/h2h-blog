@@ -2,7 +2,7 @@ import { request, gql } from 'graphql-request';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
-export const getPost = async () => {
+export const getPosts = async () => {
   const query = gql`
     query Assets {
       postsConnection {
@@ -74,29 +74,60 @@ export const getCategories = async () => {
   return results.categories;
 };
 
-export const getSimilarPosts = async () => {
+export const getPostDetails = async (slug) => {
   const query = gql`
-    query GetPostDetails($slug: String!, $categories: [String!]) {
-      posts(where: 
-        { 
-          slug_not: $slug, 
-          AND: { 
-            categories_some: { 
-              slug_in: $categories 
-            } 
-          } 
+    query GetPostDetails($slug: String!) {
+      post(where: { slug: $slug }) {
+        title
+        excerpt
+        featuredImage {
+          url
         }
-        last: 3)
-      {
-      title
-      featuredImage{
-        url
+        author {
+          name
+          bio
+          photo {
+            url
+          }
+        }
+        createdAt
+        slug
+        content {
+          raw
+        }
+        categories {
+          name
+          slug
+        }
+        content {
+          raw
+        }
       }
-      createdAt
-      slug
     }
   `;
-  const results = await request(graphqlAPI, query);
 
-  return results.posts;
+  const result = await request(graphqlAPI, query, { slug });
+
+  return result.post;
+};
+
+export const getSimilarPosts = async (categories, slug) => {
+  const query = gql`
+    query GetPostDetails($slug: String!, $categories: [String!]) {
+      posts(
+        where: { slug_not: $slug, AND: { categories_some: { slug_in: $categories } } }
+        last: 3
+      ) {
+        title
+        featuredImage {
+          url
+        }
+        createdAt
+        slug
+      }
+    }
+  `;
+  const result = await request(graphqlAPI, query, { slug, categories });
+
+  return result.posts;
 };

@@ -5,19 +5,24 @@ import { getRecentPosts, getSimilarPosts } from '../services';
 import styled from 'styled-components';
 
 const PostWidget = ({ categories, slug }) => {
-  const [realtedPosts, setRealtedPosts] = useState([]);
+  const [relatedPosts, setRelatedPosts] = useState([]);
+
   useEffect(() => {
     if (slug) {
-      getSimilarPosts(categories, slug).then((result) => setRealtedPosts(result));
+      getSimilarPosts(categories, slug).then((result) => {
+        setRelatedPosts(result);
+      });
     } else {
-      getRecentPosts().then((result) => setRealtedPosts(result));
+      getRecentPosts().then((result) => {
+        setRelatedPosts(result);
+      });
     }
   }, [slug]);
-  console.log(realtedPosts);
+
   return (
     <PostWidgetWrapper>
       <h2>Ostatnie posty</h2>
-      {realtedPosts.map((post) => (
+      {relatedPosts.map((post) => (
         <div key={post.name} className="single-related-post__wrapper">
           <img src={post.featuredImage.url} alt={post.title} />
           <p>

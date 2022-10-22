@@ -12,8 +12,6 @@ const Categories = () => {
     getCategories().then((newCategories) => setCategories(newCategories));
   }, []);
 
-  console.log(categories);
-
   return (
     <WrapperCategories>
       <h2>Kategorie</h2>

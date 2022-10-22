@@ -41,6 +41,7 @@ export const WrapperHeader = styled.div`
     .logo {
       font-size: 28px;
       padding: 20px 10px;
+      cursor: pointer;
     }
     .categories {
       cursor: pointer;
