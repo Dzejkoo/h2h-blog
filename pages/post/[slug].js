@@ -16,7 +16,6 @@ const PostDetails = ({ post }) => {
       <div className="wrapper">
         <div className="article">
           <PostDetail post={post} />
-          <Author author={post.author} />
           <CommentsForm slug={post.slug} />
           <Comments slug={post.slug} />
         </div>
@@ -38,8 +37,12 @@ export const PostDetailContainer = styled.div`
   .wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     .article {
-      width: 80%;
+      padding: 20px;
+      max-width: 920px;
+      background-color: #d9d9d9;
+      margin-bottom: 40px;
     }
   }
 `;
