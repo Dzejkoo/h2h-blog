@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import GlobalStyle from '../assets/style/globalStyle';
 import { Layout } from '../components';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme } from '../assets/style/globalStyle';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyle />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </>
   );
 }
 

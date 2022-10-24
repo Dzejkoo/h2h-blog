@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import moment from 'moment/moment';
 import Link from 'next/link';
 import { getRecentPosts, getSimilarPosts } from '../services';
 import styled from 'styled-components';
@@ -22,7 +21,7 @@ const PostWidget = ({ categories, slug }) => {
 
   return (
     <PostWidgetWrapper>
-      <h2>Ostatnie posty</h2>
+      <h2>{slug ? 'Powiązane posty' : 'Ostatnie posty'}</h2>
       {relatedPosts.map((post, index) => (
         <div key={index} className="single-related-post__wrapper">
           <img src={post.featuredImage.url} alt={post.title} />

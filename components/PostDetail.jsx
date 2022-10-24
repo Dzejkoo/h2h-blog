@@ -15,8 +15,8 @@ const PostDetail = ({ post }) => {
 
   const getContentFragment = (index, text, obj) => {
     let modifiedText = text;
+    let modifiedTextLink = obj.type === 'link' ? obj.children : null;
 
-    console.log(obj.href);
     if (obj) {
       if (obj.bold) {
         modifiedText = <b key={index}>{text}</b>;
@@ -32,6 +32,14 @@ const PostDetail = ({ post }) => {
     }
 
     switch (obj.type) {
+      case 'link':
+        return (
+          <a href={obj.href}>
+            {modifiedTextLink.map((item, i) => (
+              <React.Fragment key={i}>{item.text}</React.Fragment>
+            ))}
+          </a>
+        );
       case 'heading-two':
         return (
           <HeadingTwo key={index}>
@@ -48,24 +56,16 @@ const PostDetail = ({ post }) => {
             })}
           </Paragraph>
         );
-      case 'heading-three':
+      case 'heading-one':
         return (
-          <HeadingThree key={index}>
+          <HeadingOne key={index}>
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
-          </HeadingThree>
+          </HeadingOne>
         );
       case 'image':
-        return (
-          <DescImg
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-          />
-        );
+        return <DescImg key={index} alt={obj.title} src={obj.src} />;
       default:
         return modifiedText;
     }
@@ -94,9 +94,13 @@ const PostDetail = ({ post }) => {
 };
 
 export const Paragraph = styled.p``;
-export const HeadingThree = styled.h3``;
+export const HeadingOne = styled.h1``;
 export const HeadingTwo = styled.h2``;
-export const DescImg = styled.img``;
+export const DescImg = styled.img`
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+`;
 
 export const PostDetailWrapper = styled.div`
   .wrapper-image {

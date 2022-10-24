@@ -20,11 +20,13 @@ const PostDetails = ({ post }) => {
           <Comments slug={post.slug} />
         </div>
         <div className="left-bar">
-          <PostWidget
-            slug={post.slug}
-            categories={post.categories.map((category) => category.slug)}
-          />
-          <Categories />
+          <div className="left-bar__wrapper">
+            <PostWidget
+              slug={post.slug}
+              categories={post.categories.map((category) => category.slug)}
+            />
+            <Categories />
+          </div>
         </div>
       </div>
     </PostDetailContainer>
@@ -34,11 +36,18 @@ const PostDetails = ({ post }) => {
 export const PostDetailContainer = styled.div`
   max-width: 1300px;
   margin: 0 auto;
+  .left-bar {
+    &__wrapper {
+      position: sticky;
+      top: 20px;
+    }
+  }
   .wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     .article {
+      width: 80%;
       padding: 20px;
       max-width: 920px;
       background-color: #d9d9d9;
