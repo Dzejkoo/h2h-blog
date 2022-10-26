@@ -1,13 +1,6 @@
 import React from 'react';
 import { getPosts, getPostDetails } from '../../services';
-import {
-  PostDetail,
-  Categories,
-  PostWidget,
-  Author,
-  Comments,
-  CommentsForm
-} from '../../components';
+import { PostDetail, Categories, PostWidget, Comments, CommentsForm } from '../../components';
 import styled from 'styled-components';
 
 const PostDetails = ({ post }) => {
