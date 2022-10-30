@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { getCategories } from '../services';
+import { ModeContext } from '../providers/ModeProvider';
 
 const Header = () => {
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    getCategories().then((newCategories) => setCategories(newCategories));
-  }, []);
+  const { themeToggler } = useContext(ModeContext);
   return (
     <WrapperHeader>
       <div className="container">
@@ -16,12 +13,11 @@ const Header = () => {
             <span>h2h</span>
           </Link>
         </div>
-        <div className="categories">
-          {categories.map((category) => (
-            <Link key={category.slug} href={`/category/${category.slug}`}>
-              <span>{category.name}</span>
-            </Link>
-          ))}
+        <div className="control-panel">
+          <Switcher>
+            <input type="checkbox" onClick={themeToggler} />
+            <span></span>
+          </Switcher>
         </div>
       </div>
     </WrapperHeader>
@@ -38,6 +34,10 @@ export const WrapperHeader = styled.div`
   .container {
     display: flex;
     justify-content: space-between;
+    .control-panel {
+      display: flex;
+      align-items: center;
+    }
     .logo {
       font-size: 28px;
       padding: 20px 10px;
@@ -51,6 +51,58 @@ export const WrapperHeader = styled.div`
       span {
         padding: 10px 20px;
       }
+    }
+  }
+`;
+export const Switcher = styled.label`
+  width: 50px;
+  height: 26px;
+  @media screen and (max-width: 820px) {
+    width: 45px;
+    height: 24px;
+  }
+  position: relative;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked + span {
+      background-color: #fff;
+    }
+    &:checked + span::before {
+      transform: translateX(22px);
+      @media screen and (max-width: 820px) {
+        transform: translateX(20px);
+      }
+    }
+  }
+  span {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #383838;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 30px;
+    &::before {
+      position: absolute;
+      content: '';
+      height: 21px;
+      width: 21px;
+      @media screen and (max-width: 820px) {
+        width: 19px;
+        height: 19px;
+        bottom: 2.3px;
+      }
+      left: 4px;
+      bottom: 2.8px;
+      border-radius: 50%;
+      background-color: #ccc;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
     }
   }
 `;

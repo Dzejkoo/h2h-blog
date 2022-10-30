@@ -4,7 +4,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const PostCard = ({ post }) => {
-  console.log(post);
   return (
     <PostCardStyled>
       <div className="wrapper-image">
