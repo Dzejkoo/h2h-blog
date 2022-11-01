@@ -27,7 +27,7 @@ const PostDetails = ({ post }) => {
 };
 
 export const PostDetailContainer = styled.div`
-  max-width: 1300px;
+  max-width: 1250px;
   margin: 0 auto;
   .left-bar {
     &__wrapper {
@@ -38,10 +38,21 @@ export const PostDetailContainer = styled.div`
   .wrapper {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    @media screen and (max-width: 920px) {
+      flex-direction: column;
+    }
     justify-content: space-between;
     .article {
       width: 80%;
       padding: 20px;
+      margin-right: 20px;
+      overflow: hidden;
+      @media screen and (max-width: 920px) {
+        margin-right: 0;
+        width: auto;
+      }
       max-width: 920px;
       background-color: #d9d9d9;
       margin-bottom: 40px;

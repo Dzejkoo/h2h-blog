@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { ModeContext } from '../providers/ModeProvider';
@@ -28,11 +28,13 @@ export default Header;
 
 export const WrapperHeader = styled.div`
   margin: 0 auto;
-  max-width: 1300px;
+  width: 100%;
   border-bottom: 1px solid black;
   margin-bottom: 30px;
   .container {
     display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
     justify-content: space-between;
     .control-panel {
       display: flex;

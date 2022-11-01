@@ -72,7 +72,6 @@ const PostDetail = ({ post }) => {
   };
   return (
     <PostDetailWrapper>
-      {' '}
       <div className="wrapper-image">
         <img src={url} alt={title} className="post-image" />
       </div>

@@ -82,8 +82,12 @@ const PostCard = ({ post }) => {
 export const PostCardStyled = styled.div`
   padding: 20px;
   max-width: 920px;
+  margin-right: 20px;
   background-color: #d9d9d9;
   margin-bottom: 40px;
+  @media screen and (max-width: 920px) {
+    margin-right: 0;
+  }
   .blog-desc__wrapper {
     width: 100%;
     .basic-info {

@@ -13,8 +13,8 @@ export default function Home({ posts }) {
       </Head>
       <WrapperPage>
         <div className="post">
-          {posts.map((post) => (
-            <PostCard key={post.title} post={post.node} />
+          {posts.map((post, index) => (
+            <PostCard key={index} post={post.node} />
           ))}
         </div>
         <div className="post-widget">
@@ -36,15 +36,25 @@ export async function getStaticProps() {
 }
 
 export const Container = styled.div`
-  max-width: 1300px;
+  width: 100%;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const WrapperPage = styled.div`
-  margin: 0 auto;
   display: flex;
+  @media screen and (max-width: 920px) {
+    flex-direction: column;
+  }
+  width: 100%;
+  box-sizing: border-box;
   .post {
     width: 80%;
+    @media screen and (max-width: 920px) {
+      width: 100%;
+    }
   }
   .post-widget {
     .post-widget__wrapper {

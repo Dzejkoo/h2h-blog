@@ -22,15 +22,17 @@ const PostWidget = ({ categories, slug }) => {
   return (
     <PostWidgetWrapper>
       <h2>{slug ? 'Powiązane posty' : 'Ostatnie posty'}</h2>
-      {relatedPosts.map((post, index) => (
-        <div key={index} className="single-related-post__wrapper">
-          <img src={post.featuredImage.url} alt={post.title} />
-          <p>
-            <Link href={`/post/${post.slug}`}>{post.title}</Link>
-          </p>
-          <Calendar createdAt={post.createdAt} />
-        </div>
-      ))}
+      <div className="group-related-post__wrapper">
+        {relatedPosts.map((post, index) => (
+          <div key={index} className="single-related-post__wrapper">
+            <img src={post.featuredImage.url} alt={post.title} />
+            <p>
+              <Link href={`/post/${post.slug}`}>{post.title}</Link>
+            </p>
+            <Calendar createdAt={post.createdAt} />
+          </div>
+        ))}
+      </div>
     </PostWidgetWrapper>
   );
 };
@@ -39,13 +41,34 @@ export const PostWidgetWrapper = styled.div`
   h2 {
     margin-top: 0;
   }
-  max-width: 260px;
-
+  width: 100%;
+  .group-related-post__wrapper {
+    @media screen and (max-width: 920px) {
+      display: flex;
+      flex-direction: row;
+      /* flex-wrap: wrap; */
+    }
+    @media screen and (max-width: 570px) {
+      flex-direction: column;
+    }
+  }
   .single-related-post__wrapper {
     margin-bottom: 20px;
     box-sizing: border-box;
     padding: 10px;
-    width: 100%;
+    max-width: 260px;
+    @media screen and (max-width: 920px) {
+      max-width: 50%;
+      &.single-related-post__wrapper:first-child {
+        margin-right: 20px;
+      }
+    }
+    @media screen and (max-width: 570px) {
+      &.single-related-post__wrapper:first-child {
+        margin-right: 0;
+      }
+      max-width: 100%;
+    }
     background-color: #d9d9d9;
     img {
       width: 100%;
