@@ -17,6 +17,7 @@ const PostWidget = ({ categories, slug }) => {
         setRelatedPosts(result);
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   return (
