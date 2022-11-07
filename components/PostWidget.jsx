@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getRecentPosts, getSimilarPosts } from '../services';
 import styled from 'styled-components';
 import Calendar from './Calendar';
+import Image from 'next/image';
 
 const PostWidget = ({ categories, slug }) => {
   const [relatedPosts, setRelatedPosts] = useState([]);
@@ -26,7 +27,14 @@ const PostWidget = ({ categories, slug }) => {
       <div className="group-related-post__wrapper">
         {relatedPosts.map((post, index) => (
           <div key={index} className="single-related-post__wrapper">
-            <img src={post.featuredImage.url} alt={post.title} />
+            <div className="single-related-post__img-wrapper">
+              <Image
+                layout="fill"
+                objectFit="cover"
+                src={post.featuredImage.url}
+                alt={post.title}
+              />
+            </div>
             <p>
               <Link href={`/post/${post.slug}`}>{post.title}</Link>
             </p>
@@ -47,7 +55,6 @@ export const PostWidgetWrapper = styled.div`
     @media screen and (max-width: 920px) {
       display: flex;
       flex-direction: row;
-      /* flex-wrap: wrap; */
     }
     @media screen and (max-width: 570px) {
       flex-direction: column;
@@ -71,8 +78,10 @@ export const PostWidgetWrapper = styled.div`
       max-width: 100%;
     }
     background-color: #d9d9d9;
-    img {
+    .single-related-post__img-wrapper {
       width: 100%;
+      aspect-ratio: auto 2 / 1;
+      position: relative;
     }
   }
 `;

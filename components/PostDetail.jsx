@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Author from './Author';
+import Image from 'next/image';
 
 const PostDetail = ({ post }) => {
   const {
@@ -73,7 +74,7 @@ const PostDetail = ({ post }) => {
   return (
     <PostDetailWrapper>
       <div className="wrapper-image">
-        <img src={url} alt={title} className="post-image" />
+        <Image layout="fill" objectFit="cover" src={url} alt={title} className="post-image" />
       </div>
       <h1>
         <Link href={`/post/${slug}`}>{title}</Link>
@@ -104,6 +105,8 @@ export const DescImg = styled.img`
 export const PostDetailWrapper = styled.div`
   .wrapper-image {
     width: 100%;
+    aspect-ratio: auto 2 / 1;
+    position: relative;
     img {
       width: 100%;
     }

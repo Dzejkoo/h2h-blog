@@ -2,12 +2,19 @@ import React from 'react';
 import moment from 'moment/moment';
 import Link from 'next/link';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 const PostCard = ({ post }) => {
   return (
     <PostCardStyled>
       <div className="wrapper-image">
-        <img src={post.featuredImage.url} alt={post.title} className="post-image" />
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src={post.featuredImage.url}
+          alt={post.title}
+          className="post-image"
+        />
       </div>
       <h1>
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
@@ -112,6 +119,8 @@ export const PostCardStyled = styled.div`
   .wrapper-image {
     width: 100%;
     max-width: 943px;
+    aspect-ratio: auto 2 / 1;
+    position: relative;
     img {
       width: 100%;
     }
