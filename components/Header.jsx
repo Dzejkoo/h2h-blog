@@ -69,7 +69,7 @@ export const Switcher = styled.label`
     width: 0;
     height: 0;
     &:checked + span {
-      background-color: #fff;
+      background-color: #d9d9d9;
     }
     &:checked + span::before {
       transform: translateX(22px);
@@ -85,7 +85,7 @@ export const Switcher = styled.label`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #383838;
+    background-color: #d9d9d9;
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 30px;
@@ -102,7 +102,7 @@ export const Switcher = styled.label`
       left: 4px;
       bottom: 2.8px;
       border-radius: 50%;
-      background-color: #ccc;
+      background-color: #2e2e2e;
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }

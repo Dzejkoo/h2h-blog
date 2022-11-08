@@ -1,9 +1,10 @@
 import React from 'react';
 import moment from 'moment/moment';
+import styled from 'styled-components';
 
 const Calendar = ({ createdAt }) => {
   return (
-    <div className="calendar">
+    <CalendarWrapper>
       <svg
         width="26"
         height="24"
@@ -54,8 +55,17 @@ const Calendar = ({ createdAt }) => {
         />
       </svg>
       <span>{moment(createdAt).format('MMM DD, YYYY')}</span>
-    </div>
+    </CalendarWrapper>
   );
 };
+
+export const CalendarWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  span {
+    font-size: ${({ theme }) => theme.fontSize.smallText};
+    font-weight: 300;
+  }
+`;
 
 export default Calendar;

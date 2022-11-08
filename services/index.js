@@ -143,3 +143,20 @@ export const submitComment = async (obj) => {
 
   return result.json();
 };
+
+export const getAuthors = async () => {
+  const query = gql`
+    query GetAuthors {
+      authors {
+        name
+        bio
+        photo {
+          url
+        }
+      }
+    }
+  `;
+  const results = await request(graphqlAPI, query);
+
+  return results.authors;
+};

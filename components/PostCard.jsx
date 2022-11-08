@@ -3,12 +3,15 @@ import moment from 'moment/moment';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
+import Author from './Author';
+import { fonSize } from '../assets/style/globalStyle';
 
 const PostCard = ({ post }) => {
   return (
     <PostCardStyled>
       <div className="wrapper-image">
         <Image
+          priority
           layout="fill"
           objectFit="cover"
           src={post.featuredImage.url}
@@ -23,64 +26,7 @@ const PostCard = ({ post }) => {
         <div className="blog-desc">
           <p>{post.excerpt}</p>
         </div>
-        <div className="basic-info">
-          <div className="img-wrapper">
-            <img alt={post.author.name} src={post.author.photo.url}></img>
-            <p>{post.author.name}</p>
-          </div>
-          <div className="calendar">
-            <svg
-              width="26"
-              height="24"
-              viewBox="0 0 26 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <rect
-                x="4.38776"
-                y="5"
-                width="16.5452"
-                height="16"
-                rx="2"
-                stroke="black"
-                strokeWidth="1.3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M16.7967 3V7"
-                stroke="black"
-                strokeWidth="1.3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8.52412 3V7"
-                stroke="black"
-                strokeWidth="1.3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M4.38776 11H20.933"
-                stroke="black"
-                strokeWidth="1.3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <rect
-                x="8.52411"
-                y="15"
-                width="2.06816"
-                height="2"
-                stroke="black"
-                strokeWidth="1.3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span>{moment(post.createdAt).format('MMM DD, YYYY')}</span>
-          </div>
-        </div>
+        <Author post={post} />
       </div>
     </PostCardStyled>
   );
@@ -92,11 +38,21 @@ export const PostCardStyled = styled.div`
   margin-right: 20px;
   background-color: #d9d9d9;
   margin-bottom: 40px;
+  h1 {
+    font-size: ${({ theme }) => theme.fontSize.h1};
+  }
   @media screen and (max-width: 920px) {
     margin-right: 0;
+    padding: 10px;
   }
   .blog-desc__wrapper {
     width: 100%;
+    .blog-desc {
+      p {
+        font-size: ${({ theme }) => theme.fontSize.h3};
+        font-weight: 400;
+      }
+    }
     .basic-info {
       display: flex;
       align-items: center;

@@ -11,4 +11,21 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
+export const fontSize = (font_min, font_max, screen_min, screen_max) => `
+    font-size: ${font_min}px;
+
+    @media only screen and (min-width: ${screen_min}px) {
+        font-size: calc(
+        ${font_min}px + ${
+  font_max - font_min
+} * (100vw - ${screen_min}px) / (${screen_max} - ${screen_min})
+        );
+    }
+
+    @media only screen and (min-width: ${screen_max}px) {
+        font-size: ${font_max}px;
+    }
+    }
+`;
+
 export default GlobalStyle;
