@@ -79,7 +79,7 @@ const PostDetail = ({ post }) => {
       <h1>
         <Link href={`/post/${slug}`}>{title}</Link>
       </h1>
-      <Author isBio post={post} />
+      <Author post={post} />
       <div className="desc">
         {children.map((typeObj, index) => {
           const children = typeObj.children.map((item, itemIndex) =>

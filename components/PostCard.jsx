@@ -36,6 +36,7 @@ export const PostCardStyled = styled.div`
   padding: 20px;
   max-width: 920px;
   margin-right: 20px;
+  border-radius: 10px;
   background-color: #d9d9d9;
   margin-bottom: 40px;
   h1 {
@@ -77,8 +78,10 @@ export const PostCardStyled = styled.div`
     max-width: 943px;
     aspect-ratio: auto 2 / 1;
     position: relative;
+    border-radius: 10px;
     img {
       width: 100%;
+      border-radius: 10px;
     }
   }
 `;

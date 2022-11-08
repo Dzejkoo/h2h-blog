@@ -5,12 +5,11 @@ import Calendar from './Calendar';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Author = ({ post, isBio }) => {
+const Author = ({ post }) => {
   const {
     createdAt,
     author: {
       name,
-      bio,
       photo: { url }
     }
   } = post;
@@ -18,9 +17,7 @@ const Author = ({ post, isBio }) => {
     <AuthorWrapper>
       <div className="info">
         <div className="info-img__wrapper">
-          <Link href="/authors">
-            <Image layout="fill" objectFit="cover" src={url} alt="author" />
-          </Link>
+          <Image layout="fill" objectFit="cover" src={url} alt="author" />
         </div>
         <div className="info__desc">
           <h2>
@@ -48,14 +45,20 @@ export const AuthorWrapper = styled.div`
     &__desc {
       max-width: 500px;
       h2 {
+        margin-left: 10px;
         cursor: pointer;
-        font-size: ${({ theme }) => theme.fontSize.h3};
+        font-weight: 300;
+        a {
+          text-decoration: none;
+          color: black;
+        }
+        font-size: ${({ theme }) => theme.fontSize.reguralText};
       }
     }
     .info-img__wrapper {
       width: 100%;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
       position: relative;
     }

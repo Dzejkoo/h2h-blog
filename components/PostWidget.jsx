@@ -65,6 +65,7 @@ export const PostWidgetWrapper = styled.div`
     box-sizing: border-box;
     padding: 10px;
     max-width: 260px;
+    border-radius: 10px;
     @media screen and (max-width: 920px) {
       max-width: 50%;
       &.single-related-post__wrapper:first-child {
@@ -82,6 +83,9 @@ export const PostWidgetWrapper = styled.div`
       width: 100%;
       aspect-ratio: auto 2 / 1;
       position: relative;
+      img {
+        border-radius: 10px;
+      }
     }
   }
 `;
