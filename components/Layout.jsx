@@ -10,13 +10,11 @@ const Layout = ({ children }) => {
   const { theme } = useContext(ModeContext);
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
   return (
-    <WrapperPage>
-      <ThemeProvider theme={themeMode}>
-        <GlobalStyle />
-        <Header />
-        {children}
-      </ThemeProvider>
-    </WrapperPage>
+    <ThemeProvider theme={themeMode}>
+      <GlobalStyle />
+      <Header />
+      <WrapperPage>{children}</WrapperPage>
+    </ThemeProvider>
   );
 };
 

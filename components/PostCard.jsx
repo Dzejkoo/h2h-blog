@@ -7,6 +7,7 @@ import Author from './Author';
 import { fonSize } from '../assets/style/globalStyle';
 
 const PostCard = ({ post }) => {
+  console.log(post);
   return (
     <PostCardStyled>
       <div className="wrapper-image">
@@ -37,10 +38,17 @@ export const PostCardStyled = styled.div`
   max-width: 920px;
   margin-right: 20px;
   border-radius: 10px;
-  background-color: #d9d9d9;
+  background-color: ${({ theme }) => theme.blockBgc};
   margin-bottom: 40px;
   h1 {
     font-size: ${({ theme }) => theme.fontSize.h1};
+    a {
+      color: ${({ theme }) => theme.text};
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   @media screen and (max-width: 920px) {
     margin-right: 0;
@@ -51,7 +59,8 @@ export const PostCardStyled = styled.div`
     .blog-desc {
       p {
         font-size: ${({ theme }) => theme.fontSize.h3};
-        font-weight: 400;
+        font-weight: 300;
+        line-height: 120%;
       }
     }
     .basic-info {

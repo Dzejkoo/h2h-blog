@@ -35,11 +35,11 @@ const PostDetail = ({ post }) => {
     switch (obj.type) {
       case 'link':
         return (
-          <a href={obj.href}>
+          <PostDetailLink href={obj.href}>
             {modifiedTextLink.map((item, i) => (
               <React.Fragment key={i}>{item.text}</React.Fragment>
             ))}
-          </a>
+          </PostDetailLink>
         );
       case 'heading-two':
         return (
@@ -76,9 +76,9 @@ const PostDetail = ({ post }) => {
       <div className="wrapper-image">
         <Image layout="fill" objectFit="cover" src={url} alt={title} className="post-image" />
       </div>
-      <h1 className="card-detail__title">
+      <PostDetailTitle className="card-detail__title">
         <Link href={`/post/${slug}`}>{title}</Link>
-      </h1>
+      </PostDetailTitle>
       <Author post={post} />
       <div className="desc">
         {children.map((typeObj, index) => {
@@ -93,9 +93,24 @@ const PostDetail = ({ post }) => {
   );
 };
 
+export const PostDetailTitle = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize.h1};
+  a {
+    color: ${({ theme }) => theme.text};
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+export const PostDetailLink = styled.a`
+  color: ${({ theme }) => theme.link};
+`;
 export const Paragraph = styled.p`
   font-size: ${({ theme }) => theme.fontSize.reguralText};
   font-weight: 300;
+  line-height: 130%;
 `;
 export const HeadingOne = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.h1};
@@ -113,14 +128,14 @@ export const PostDetailWrapper = styled.div`
   background-color: ${({ theme }) => theme.blockBgc};
   border-radius: 10px;
   padding: 20px;
+  max-width: 920px;
+  @media screen and (max-width: 920px) {
+    padding: 10px;
+  }
   .desc {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    padding-top: 20px;
   }
-  .card-detail__title {
-    font-size: ${({ theme }) => theme.fontSize.h1};
-  }
+
   .wrapper-image {
     border-radius: 10px;
     width: 100%;

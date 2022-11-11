@@ -59,7 +59,7 @@ export const WrapperPage = styled.div`
   .post-widget {
     .post-widget__wrapper {
       position: sticky;
-      top: 20px;
+      top: 112px;
     }
   }
 `;

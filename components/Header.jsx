@@ -29,12 +29,18 @@ export default Header;
 export const WrapperHeader = styled.div`
   margin: 0 auto;
   width: 100%;
-  border-bottom: 1px solid black;
   margin-bottom: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: ${({ theme }) => theme.headerBgc};
   .container {
     display: flex;
     margin-left: 10px;
     margin-right: 10px;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 10px;
     justify-content: space-between;
     .control-panel {
       display: flex;

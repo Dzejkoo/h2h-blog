@@ -14,7 +14,9 @@ const Categories = () => {
 
   return (
     <WrapperCategories>
-      <h2>Kategorie</h2>
+      <h2>
+        <span>Kategorie</span>
+      </h2>
       <div className="league-wrapper">
         {categories.map((category) => {
           return (
@@ -33,6 +35,34 @@ const Categories = () => {
 
 export const WrapperCategories = styled.div`
   max-width: 260px;
+  h2 {
+    margin-top: 10px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      background-color: ${({ theme }) => theme.border};
+    }
+    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    span {
+      display: block;
+      line-height: 100%;
+      padding-bottom: 20px;
+      z-index: 1;
+      text-transform: uppercase;
+      border-bottom: 1px solid ${({ theme }) => theme.text};
+      font-size: ${({ theme }) => theme.fontSize.smallText};
+      letter-spacing: 1px;
+    }
+  }
   .league-wrapper {
     display: flex;
     flex-direction: row;

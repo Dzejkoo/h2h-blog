@@ -7,13 +7,13 @@ const PostDetails = ({ post }) => {
   return (
     <PostDetailContainer>
       <div className="wrapper">
-        <div className="article">
+        <WrapperArticle className="article">
           <PostDetail post={post} />
           <div className="">
             <CommentsForm slug={post.slug} />
             <Comments slug={post.slug} />
           </div>
-        </div>
+        </WrapperArticle>
 
         <div className="left-bar">
           <div className="left-bar__wrapper">
@@ -28,6 +28,20 @@ const PostDetails = ({ post }) => {
     </PostDetailContainer>
   );
 };
+
+export const WrapperArticle = styled.div`
+  width: 80%;
+  /* max-width: 960px; */
+  border-radius: 10px;
+  margin-right: 20px;
+  overflow: hidden;
+  @media screen and (max-width: 920px) {
+    margin-right: 0;
+    width: auto;
+  }
+
+  margin-bottom: 40px;
+`;
 
 export const PostDetailContainer = styled.div`
   max-width: 1250px;
@@ -49,19 +63,6 @@ export const PostDetailContainer = styled.div`
       flex-direction: column;
     }
     justify-content: space-between;
-    .article {
-      width: 80%;
-      border-radius: 10px;
-      margin-right: 20px;
-      overflow: hidden;
-      @media screen and (max-width: 920px) {
-        margin-right: 0;
-        width: auto;
-      }
-      max-width: 920px;
-
-      margin-bottom: 40px;
-    }
   }
 `;
 

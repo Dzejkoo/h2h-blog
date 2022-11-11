@@ -50,7 +50,7 @@ export const AuthorWrapper = styled.div`
         font-weight: 300;
         a {
           text-decoration: none;
-          color: black;
+          color: ${({ theme }) => theme.primaryColor};
         }
         font-size: ${({ theme }) => theme.fontSize.reguralText};
       }

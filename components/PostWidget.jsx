@@ -23,7 +23,9 @@ const PostWidget = ({ categories, slug }) => {
 
   return (
     <PostWidgetWrapper>
-      <h2>{slug ? 'Powiązane posty' : 'Ostatnie posty'}</h2>
+      <h2>
+        <span>{slug ? 'Powiązane' : 'Ostatnie'}</span>
+      </h2>
       <div className="group-related-post__wrapper">
         {relatedPosts.map((post, index) => (
           <div key={index} className="single-related-post__wrapper">
@@ -48,7 +50,32 @@ const PostWidget = ({ categories, slug }) => {
 
 export const PostWidgetWrapper = styled.div`
   h2 {
-    margin-top: 0;
+    margin-top: 10px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      background-color: ${({ theme }) => theme.border};
+    }
+    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    span {
+      display: block;
+      line-height: 100%;
+      padding-bottom: 20px;
+      z-index: 1;
+      text-transform: uppercase;
+      border-bottom: 1px solid ${({ theme }) => theme.text};
+      font-size: ${({ theme }) => theme.fontSize.smallText};
+      letter-spacing: 1px;
+    }
   }
   width: 100%;
   .group-related-post__wrapper {
@@ -66,6 +93,18 @@ export const PostWidgetWrapper = styled.div`
     padding: 10px;
     max-width: 260px;
     border-radius: 10px;
+    p {
+      font-weight: 400;
+      a {
+        color: ${({ theme }) => theme.text};
+        text-decoration: none;
+        line-height: 120%;
+        font-size: 14px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
     @media screen and (max-width: 920px) {
       max-width: 50%;
       &.single-related-post__wrapper:first-child {
@@ -78,7 +117,7 @@ export const PostWidgetWrapper = styled.div`
       }
       max-width: 100%;
     }
-    background-color: #d9d9d9;
+    background-color: ${({ theme }) => theme.blockBgc};
     .single-related-post__img-wrapper {
       width: 100%;
       aspect-ratio: auto 2 / 1;
