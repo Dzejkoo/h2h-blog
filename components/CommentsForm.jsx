@@ -53,7 +53,9 @@ const CommentsFrom = ({ slug }) => {
   };
   return (
     <CommentsFormWrapper>
-      <h3 className="comments__title">Skomentuj</h3>
+      <h3>
+        <span>Skomentuj</span>
+      </h3>
       <div className="comments__textarea">
         <textarea
           rows="10"
@@ -61,7 +63,8 @@ const CommentsFrom = ({ slug }) => {
           ref={commentEl}
           maxLength="200"
           placeholder="Komentarz"
-          name="komentarz"></textarea>
+          name="komentarz"
+          required></textarea>
       </div>
       <div className="comments__input">
         <input placeholder="name" name="name" type="text" ref={nameEl} />
@@ -70,39 +73,120 @@ const CommentsFrom = ({ slug }) => {
       <div className="comment__checkbox">
         <div className="comments__checkbox-wrapper">
           <input type="checkbox" ref={storeDataEl} id="storeData" name="sotreData" value="true" />
-          <label htmlFor="storeData">Zapisz mój email i imię do następnego komentarza</label>
+          <label htmlFor="storeData">Zapmiętaj</label>
         </div>
       </div>
-      {error && <p>Wszystkie pola są wymagane</p>}
+      {error && <Error>Wszystkie pola są wymagane</Error>}
       <div className="comments__button">
         <button type="button" onClick={handleCommentSubmission}>
           Wyślij
         </button>
       </div>
-      {showSuccesMessage && <span>Komentarz został dodany</span>}
+      {showSuccesMessage && (
+        <Succes showSuccesMessage={showSuccesMessage}>Komentarz został dodany</Succes>
+      )}
     </CommentsFormWrapper>
   );
 };
 
+export const Succes = styled.span`
+  padding: 15px;
+  font-size: ${({ theme }) => theme.fontSize.smallText};
+  font-weight: 300;
+  border-radius: 5px;
+  color: white;
+  margin-top: 20px;
+  background-color: #38b000;
+`;
+
 const CommentsFormWrapper = styled.div`
   width: 100%;
+  padding: 20px;
+  background-color: ${({ theme }) => theme.blockBgc};
+  margin-top: 30px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    margin-top: 10px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      background-color: ${({ theme }) => theme.border};
+    }
+    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    span {
+      display: block;
+      line-height: 100%;
+      padding-bottom: 20px;
+      z-index: 1;
+      text-transform: uppercase;
+      border-bottom: 1px solid ${({ theme }) => theme.text};
+      font-size: ${({ theme }) => theme.fontSize.smallText};
+      letter-spacing: 1px;
+    }
+  }
+
   .comments__input {
     width: 100%;
     display: flex;
 
     input {
+      border: 0;
       &:first-child {
         margin-right: 10px;
       }
       width: 50%;
-      padding: 10px;
+      padding: 15px;
+      font-family: 'Lato', sans-serif;
+      border-radius: 5px;
     }
   }
   .comments__button {
     button {
-      padding: 5px 23px;
-      margin-top: 10px;
-      margin-bottom: 20px;
+      padding: 9px 23px;
+      margin-top: 15px;
+      margin-bottom: 10px;
+      background-color: ${({ theme }) => theme.colorRegural.primaryColor};
+      border: 0;
+      color: white;
+      text-transform: uppercase;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: ${({ theme }) => theme.fontSize.smallestTex};
+    }
+    button:hover {
+      background-color: ${({ theme }) => theme.colorRegural.primaryColorLight};
+    }
+  }
+  .comment__checkbox {
+    padding: 20px 0 10px 0;
+    font-size: ${({ theme }) => theme.fontSize.smallText};
+    font-weight: 300;
+    .comments__checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      input {
+        margin: 0;
+        padding: 5px;
+        width: 15px;
+        height: 15px;
+      }
+    }
+    label {
+      margin-left: 10px;
     }
   }
   .comments__textarea {
@@ -112,12 +196,24 @@ const CommentsFormWrapper = styled.div`
     textarea {
       box-sizing: border-box;
       width: 100%;
+      border: 0;
+      border-radius: 5px;
+      font-family: 'Lato', sans-serif;
       height: 100%;
       margin: 0;
-      padding: 10px;
+      padding: 15px;
       resize: none;
       overflow: auto;
     }
   }
+`;
+
+export const Error = styled.p`
+  padding: 15px;
+  font-size: ${({ theme }) => theme.fontSize.smallText};
+  font-weight: 300;
+  border-radius: 5px;
+  color: white;
+  background-color: #dc2f02;
 `;
 export default CommentsFrom;

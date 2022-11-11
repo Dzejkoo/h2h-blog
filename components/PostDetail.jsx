@@ -76,7 +76,7 @@ const PostDetail = ({ post }) => {
       <div className="wrapper-image">
         <Image layout="fill" objectFit="cover" src={url} alt={title} className="post-image" />
       </div>
-      <h1>
+      <h1 className="card-detail__title">
         <Link href={`/post/${slug}`}>{title}</Link>
       </h1>
       <Author post={post} />
@@ -93,9 +93,16 @@ const PostDetail = ({ post }) => {
   );
 };
 
-export const Paragraph = styled.p``;
-export const HeadingOne = styled.h1``;
-export const HeadingTwo = styled.h2``;
+export const Paragraph = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.reguralText};
+  font-weight: 300;
+`;
+export const HeadingOne = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize.h1};
+`;
+export const HeadingTwo = styled.h2`
+  font-size: ${({ theme }) => theme.fontSize.h2};
+`;
 export const DescImg = styled.img`
   max-width: 100%;
   margin: 0 auto;
@@ -103,11 +110,24 @@ export const DescImg = styled.img`
 `;
 
 export const PostDetailWrapper = styled.div`
+  background-color: ${({ theme }) => theme.blockBgc};
+  border-radius: 10px;
+  padding: 20px;
+  .desc {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+  .card-detail__title {
+    font-size: ${({ theme }) => theme.fontSize.h1};
+  }
   .wrapper-image {
+    border-radius: 10px;
     width: 100%;
     aspect-ratio: auto 2 / 1;
     position: relative;
     img {
+      border-radius: 10px;
       width: 100%;
     }
   }

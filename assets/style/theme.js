@@ -2,12 +2,16 @@ import { fontSize } from './globalStyle';
 
 const light = {
   body: '#fff',
-  text: '#000'
+  text: '#212529',
+  blockBgc: '#d9d9d9',
+  border: '#bfc0c0'
 };
 
 const dark = {
-  body: '#000',
-  text: '#fff'
+  body: '#212529',
+  text: '#fff',
+  blockBgc: '#343a40',
+  border: '#495057'
 };
 
 const defaulTheme = {
@@ -16,7 +20,12 @@ const defaulTheme = {
     h2: fontSize(18, 25, 320, 1400),
     h3: fontSize(16, 19, 320, 1400),
     reguralText: fontSize(14, 16, 320, 1400),
-    smallText: fontSize(12, 14, 320, 1400)
+    smallText: fontSize(12, 14, 320, 1400),
+    smallestTex: fontSize(10, 12, 320, 1400)
+  },
+  colorRegural: {
+    primaryColor: '#055645',
+    primaryColorLight: '#32BCA3'
   }
 };
 

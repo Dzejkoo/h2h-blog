@@ -9,9 +9,12 @@ const PostDetails = ({ post }) => {
       <div className="wrapper">
         <div className="article">
           <PostDetail post={post} />
-          <CommentsForm slug={post.slug} />
-          <Comments slug={post.slug} />
+          <div className="">
+            <CommentsForm slug={post.slug} />
+            <Comments slug={post.slug} />
+          </div>
         </div>
+
         <div className="left-bar">
           <div className="left-bar__wrapper">
             <PostWidget
@@ -28,6 +31,8 @@ const PostDetails = ({ post }) => {
 
 export const PostDetailContainer = styled.div`
   max-width: 1250px;
+
+  box-sizing: border-box;
   margin: 0 auto;
   .left-bar {
     &__wrapper {
@@ -46,7 +51,7 @@ export const PostDetailContainer = styled.div`
     justify-content: space-between;
     .article {
       width: 80%;
-      padding: 20px;
+      border-radius: 10px;
       margin-right: 20px;
       overflow: hidden;
       @media screen and (max-width: 920px) {
@@ -54,7 +59,7 @@ export const PostDetailContainer = styled.div`
         width: auto;
       }
       max-width: 920px;
-      background-color: #d9d9d9;
+
       margin-bottom: 40px;
     }
   }
