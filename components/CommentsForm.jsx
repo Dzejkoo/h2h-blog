@@ -102,6 +102,7 @@ export const Succes = styled.span`
 const CommentsFormWrapper = styled.div`
   width: 100%;
   padding: 20px;
+  max-width: 960px;
   @media screen and (max-width: 920px) {
     padding: 10px;
   }

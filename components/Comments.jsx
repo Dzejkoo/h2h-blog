@@ -28,7 +28,7 @@ const Comments = ({ slug }) => {
                 <span className="comment__name">{comment.name}</span>
                 {''}
                 <span className="comment__date">
-                  {moment(comment.createdAt).format('MM.DD.YYYY')}
+                  {moment(comment.createdAt).format('DD.MM.YYYY')}
                 </span>
               </p>
               <p className="commnet__text">{parse(comment.comment)}</p>
@@ -43,6 +43,10 @@ const Comments = ({ slug }) => {
 export const Comment = styled.div`
   margin-bottom: 20px;
   border-bottom: 1px solid ${({ theme }) => theme.border};
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0px;
+  }
   .comment__bar {
     font-size: ${({ theme }) => theme.fontSize.smallText};
 

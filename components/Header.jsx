@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ModeContext } from '../providers/ModeProvider';
 
 const Header = () => {
-  const { themeToggler } = useContext(ModeContext);
+  const { themeToggler, checked } = useContext(ModeContext);
   return (
     <WrapperHeader>
       <div className="container">
@@ -15,7 +15,7 @@ const Header = () => {
         </div>
         <div className="control-panel">
           <Switcher>
-            <input type="checkbox" onClick={themeToggler} />
+            <input type="checkbox" defaultChecked={checked} onClick={themeToggler} />
             <span></span>
           </Switcher>
         </div>
@@ -63,11 +63,11 @@ export const WrapperHeader = styled.div`
   }
 `;
 export const Switcher = styled.label`
-  width: 50px;
-  height: 26px;
+  width: 41px;
+  height: 22px;
   @media screen and (max-width: 820px) {
-    width: 45px;
-    height: 24px;
+    width: 41px;
+    height: 22px;
   }
   position: relative;
   input {
@@ -75,12 +75,12 @@ export const Switcher = styled.label`
     width: 0;
     height: 0;
     &:checked + span {
-      background-color: #d9d9d9;
+      background-color: ${({ theme }) => theme.primaryColor};
     }
     &:checked + span::before {
-      transform: translateX(22px);
+      transform: translateX(17px);
       @media screen and (max-width: 820px) {
-        transform: translateX(20px);
+        transform: translateX(17px);
       }
     }
   }
@@ -91,24 +91,20 @@ export const Switcher = styled.label`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #d9d9d9;
+    background-color: ${({ theme }) => theme.primaryColor};
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 30px;
     &::before {
       position: absolute;
       content: '';
-      height: 21px;
-      width: 21px;
-      @media screen and (max-width: 820px) {
-        width: 19px;
-        height: 19px;
-        bottom: 2.3px;
-      }
+      height: 17px;
+      width: 17px;
+
       left: 4px;
       bottom: 2.8px;
       border-radius: 50%;
-      background-color: #2e2e2e;
+      background-color: ${({ theme }) => theme.blockBgc};
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }

@@ -66,8 +66,10 @@ export const WrapperCategories = styled.div`
   .league-wrapper {
     display: flex;
     flex-direction: row;
+
     .league {
       margin-right: 20px;
+      display: flex;
       p {
         text-align: center;
         margin-top: 10px;

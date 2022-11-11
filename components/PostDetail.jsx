@@ -76,6 +76,9 @@ const PostDetail = ({ post }) => {
       <div className="wrapper-image">
         <Image layout="fill" objectFit="cover" src={url} alt={title} className="post-image" />
       </div>
+      <CategoryPostCard>
+        <span>{post.categories.map((category) => category.name)}</span>
+      </CategoryPostCard>
       <PostDetailTitle className="card-detail__title">
         <Link href={`/post/${slug}`}>{title}</Link>
       </PostDetailTitle>
@@ -92,6 +95,28 @@ const PostDetail = ({ post }) => {
     </PostDetailWrapper>
   );
 };
+
+export const CategoryPostCard = styled.div`
+  padding-top: 20px;
+  span {
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.primaryColor};
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    margin-left: 25px;
+    &::after {
+      content: '';
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: -15px;
+      top: 50%;
+      width: 15px;
+      height: 3px;
+      background-color: ${({ theme }) => theme.primaryColor};
+    }
+  }
+`;
 
 export const PostDetailTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.h1};
@@ -110,7 +135,7 @@ export const PostDetailLink = styled.a`
 export const Paragraph = styled.p`
   font-size: ${({ theme }) => theme.fontSize.reguralText};
   font-weight: 300;
-  line-height: 130%;
+  line-height: 150%;
 `;
 export const HeadingOne = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.h1};

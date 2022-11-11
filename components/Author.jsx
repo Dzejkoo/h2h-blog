@@ -47,7 +47,7 @@ export const AuthorWrapper = styled.div`
       h2 {
         margin-left: 10px;
         cursor: pointer;
-        font-weight: 300;
+        font-weight: 500;
         a {
           text-decoration: none;
           color: ${({ theme }) => theme.primaryColor};

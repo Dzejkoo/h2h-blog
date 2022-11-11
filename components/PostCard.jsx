@@ -20,6 +20,9 @@ const PostCard = ({ post }) => {
           className="post-image"
         />
       </div>
+      <CategoryPostCard>
+        <span>{post.categories.map((category) => category.name)}</span>
+      </CategoryPostCard>
       <h1>
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
       </h1>
@@ -32,6 +35,28 @@ const PostCard = ({ post }) => {
     </PostCardStyled>
   );
 };
+
+export const CategoryPostCard = styled.div`
+  padding-top: 20px;
+  span {
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.primaryColor};
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    margin-left: 25px;
+    &::after {
+      content: '';
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: -15px;
+      top: 50%;
+      width: 15px;
+      height: 3px;
+      background-color: ${({ theme }) => theme.primaryColor};
+    }
+  }
+`;
 
 export const PostCardStyled = styled.div`
   padding: 20px;
