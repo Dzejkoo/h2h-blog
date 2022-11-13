@@ -5,7 +5,6 @@ import { getComments } from '../services';
 import styled from 'styled-components';
 
 const Comments = ({ slug }) => {
-  const [error, setError] = useState(false);
   const [comments, setComments] = useState([]);
   useEffect(() => {
     getComments(slug).then((result) => setComments(result));
@@ -78,6 +77,8 @@ export const Comment = styled.div`
 export const WrapperComment = styled.div`
   background-color: ${({ theme }) => theme.blockBgc};
   padding: 20px;
+  /* box-sizing: border-box; */
+  max-width: 920px;
   margin-top: 30px;
   border-radius: 10px;
   .comments__wrapper {

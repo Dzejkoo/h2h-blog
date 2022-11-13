@@ -1,9 +1,22 @@
 import React from 'react';
 import { getPosts, getPostDetails } from '../../services';
-import { PostDetail, Categories, PostWidget, Comments, CommentsForm } from '../../components';
+import {
+  PostDetail,
+  Categories,
+  PostWidget,
+  Comments,
+  CommentsForm,
+  Loader
+} from '../../components';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 const PostDetails = ({ post }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
   return (
     <PostDetailContainer>
       <div className="wrapper">
@@ -31,7 +44,6 @@ const PostDetails = ({ post }) => {
 
 export const WrapperArticle = styled.div`
   width: 80%;
-  /* max-width: 960px; */
   border-radius: 10px;
   margin-right: 20px;
   overflow: hidden;
@@ -80,6 +92,6 @@ export async function getStaticPaths() {
 
   return {
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-    fallback: false
+    fallback: true
   };
 }

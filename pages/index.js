@@ -1,9 +1,16 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { ArrowBack } from '../assets/images/vectors/ArrowBack';
 import { PostCard, Categories, PostWidget } from '../components';
 import { getPosts } from '../services';
 
 export default function Home({ posts }) {
+  const [postNum, setPostNum] = useState(3);
+  console.log(postNum, posts.length);
+  const handleClick = () => {
+    setPostNum((prev) => prev + 3);
+  };
   return (
     <Container>
       <Head>
@@ -13,9 +20,16 @@ export default function Home({ posts }) {
       </Head>
       <WrapperPage>
         <div className="post">
-          {posts.map((post, index) => (
+          {posts.slice(0, postNum).map((post, index) => (
             <PostCard key={index} post={post.node} />
           ))}
+          {postNum >= posts.length ? (
+            ''
+          ) : (
+            <ButtonMore onClick={handleClick}>
+              Załaduj więcej <ArrowBack />
+            </ButtonMore>
+          )}
         </div>
         <div className="post-widget">
           <div className="post-widget__wrapper">
@@ -35,6 +49,45 @@ export async function getStaticProps() {
   };
 }
 
+export const ButtonMore = styled.button`
+  color: ${({ theme }) => theme.primaryColor};
+  font-size: ${({ theme }) => theme.fontSize.smallText};
+  font-weight: 200;
+  letter-spacing: 1px;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  svg {
+    animation: bounce 2s infinite;
+    width: 25px;
+    height: 25px;
+    margin-top: 7px;
+    path {
+      stroke: ${({ theme }) => theme.primaryColor};
+    }
+  }
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+`;
+
 export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -51,6 +104,10 @@ export const WrapperPage = styled.div`
   width: 100%;
   box-sizing: border-box;
   .post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 80%;
     @media screen and (max-width: 920px) {
       width: 100%;
