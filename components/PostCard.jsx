@@ -7,7 +7,6 @@ import Author from './Author';
 import { fonSize } from '../assets/style/globalStyle';
 
 const PostCard = ({ post }) => {
-  console.log(post);
   return (
     <PostCardStyled>
       <div className="wrapper-image">

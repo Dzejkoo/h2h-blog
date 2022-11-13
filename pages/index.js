@@ -7,7 +7,7 @@ import { getPosts } from '../services';
 
 export default function Home({ posts }) {
   const [postNum, setPostNum] = useState(3);
-  console.log(postNum, posts.length);
+
   const handleClick = () => {
     setPostNum((prev) => prev + 3);
   };
