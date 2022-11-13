@@ -171,7 +171,8 @@ export const getComments = async (slug) => {
       }
     }
   `;
-  const results = await request(graphqlAPI, query, { slug });
 
-  return results.comments;
+  const result = await request(graphqlAPI, query, { slug });
+
+  return result.comments;
 };

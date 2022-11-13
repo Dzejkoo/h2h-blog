@@ -33,6 +33,7 @@ const PostWidget = ({ categories, slug }) => {
               <Image
                 layout="fill"
                 objectFit="cover"
+                priority={true}
                 src={post.featuredImage.url}
                 alt={post.title}
               />

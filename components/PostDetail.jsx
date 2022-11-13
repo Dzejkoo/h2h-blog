@@ -74,7 +74,14 @@ const PostDetail = ({ post }) => {
   return (
     <PostDetailWrapper>
       <div className="wrapper-image">
-        <Image layout="fill" objectFit="cover" src={url} alt={title} className="post-image" />
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src={url}
+          alt={title}
+          className="post-image"
+          priority={true}
+        />
       </div>
       <CategoryPostCard>
         <span>{post.categories.map((category) => category.name)}</span>

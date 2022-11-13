@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { ArrowBack } from '../../assets/images/vectors/ArrowBack';
 
 const authors = ({ author }) => {
-  console.log(author);
   return (
     <AuthorsWrapper>
       <div className="button-back">
@@ -18,7 +17,13 @@ const authors = ({ author }) => {
       {author.map((single, index) => (
         <div key={index} className="container-author">
           <div className="auhtor__img-wrapper">
-            <Image src={single.photo.url} priority layout="fill" objectFit="cover" alt="author" />
+            <Image
+              src={single.photo.url}
+              priority={true}
+              layout="fill"
+              objectFit="cover"
+              alt="author"
+            />
           </div>
           <div className="author__desc">
             <h2>{single.name}</h2>

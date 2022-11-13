@@ -11,7 +11,7 @@ const PostCard = ({ post }) => {
     <PostCardStyled>
       <div className="wrapper-image">
         <Image
-          priority
+          priority={true}
           layout="fill"
           objectFit="cover"
           src={post.featuredImage.url}

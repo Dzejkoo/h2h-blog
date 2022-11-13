@@ -48,7 +48,6 @@ export async function getStaticProps() {
     props: { posts }
   };
 }
-
 export const ButtonMore = styled.button`
   color: ${({ theme }) => theme.primaryColor};
   font-size: ${({ theme }) => theme.fontSize.smallText};

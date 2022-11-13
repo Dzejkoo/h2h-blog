@@ -17,7 +17,7 @@ const Author = ({ post }) => {
     <AuthorWrapper>
       <div className="info">
         <div className="info-img__wrapper">
-          <Image layout="fill" objectFit="cover" src={url} alt="author" />
+          <Image layout="fill" objectFit="cover" src={url} alt="author" priority={true} />
         </div>
         <div className="info__desc">
           <h2>

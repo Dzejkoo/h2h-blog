@@ -6,9 +6,11 @@ import styled from 'styled-components';
 
 const Comments = ({ slug }) => {
   const [comments, setComments] = useState([]);
+  console.log(slug);
+  console.log(comments);
   useEffect(() => {
     getComments(slug).then((result) => setComments(result));
-  }, []);
+  }, [slug]);
   return (
     <>
       {comments.length > 0 && (
