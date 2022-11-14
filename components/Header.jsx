@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { ModeContext } from '../providers/ModeProvider';
+import Image from 'next/image';
 
 const Header = () => {
   const { themeToggler, checked } = useContext(ModeContext);
@@ -10,7 +11,7 @@ const Header = () => {
       <div className="container">
         <div className="logo">
           <Link href="/">
-            <span>h2h</span>
+            <span>LOGO</span>
           </Link>
         </div>
         <div className="control-panel">
