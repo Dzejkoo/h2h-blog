@@ -116,6 +116,10 @@ export const WrapperPage = styled.div`
     .post-widget__wrapper {
       position: sticky;
       top: 112px;
+      @media screen and (max-width: 920px) {
+        position: relative;
+        top: 0;
+      }
     }
   }
 `;

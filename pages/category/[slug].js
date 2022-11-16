@@ -19,26 +19,50 @@ const CategoryPost = ({ posts }) => {
   }
   return (
     <WrapperPage>
-      <div className="post">
-        {posts.slice(0, postNum).map((post, index) => (
-          <PostCard key={index} post={post.node} />
-        ))}
-        {postNum >= posts.length ? (
-          ''
-        ) : (
-          <ButtonMore onClick={handleClick}>
-            Załaduj więcej <ArrowBack />
-          </ButtonMore>
-        )}
-      </div>
-      <div className="post-widget">
-        <div className="post-widget__wrapper">
-          <Categories />
+      <CategoriesTitle>
+        <span>{posts[0].node.categories.map((category) => category.name)}</span>
+      </CategoriesTitle>
+      <ContainerPost>
+        <div className="post">
+          {posts.slice(0, postNum).map((post, index) => (
+            <PostCard key={index} post={post.node} />
+          ))}
+          {postNum >= posts.length ? (
+            ''
+          ) : (
+            <ButtonMore onClick={handleClick}>
+              Załaduj więcej <ArrowBack />
+            </ButtonMore>
+          )}
         </div>
-      </div>
+        <div className="post-widget">
+          <div className="post-widget__wrapper">
+            <Categories />
+          </div>
+        </div>
+      </ContainerPost>
     </WrapperPage>
   );
 };
+
+export const ContainerPost = styled.div`
+  display: flex;
+  @media screen and (max-width: 920px) {
+    flex-direction: column;
+  }
+  width: 100%;
+`;
+
+export const CategoriesTitle = styled.div`
+  padding: 20px 0;
+  span {
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.primaryColor};
+    font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSize.h2};
+    position: relative;
+  }
+`;
 
 export const ButtonMore = styled.button`
   color: ${({ theme }) => theme.primaryColor};
@@ -81,9 +105,7 @@ export const ButtonMore = styled.button`
 
 export const WrapperPage = styled.div`
   display: flex;
-  @media screen and (max-width: 920px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
   width: 100%;
   box-sizing: border-box;
   .post {

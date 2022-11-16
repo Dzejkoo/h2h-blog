@@ -63,7 +63,11 @@ export const PostDetailContainer = styled.div`
   .left-bar {
     &__wrapper {
       position: sticky;
-      top: 20px;
+      top: 114px;
+      @media screen and (max-width: 920px) {
+        position: relative;
+        top: 0;
+      }
     }
   }
   .wrapper {
